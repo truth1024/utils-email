@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+     http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+     http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd
+     http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+     http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+
+	<!-- enable component scanning (beware that this does not enable mapper scanning!) -->
+	<context:component-scan base-package="com.truth99.utils.email" />
+
+	<!-- enable autowire -->
+	<context:annotation-config />
+
+	<bean id="emailUtil" class="com.truth99.utils.email.EmailUtil">
+       	<property name="mail_host" value="${mail.smtp.host}"/>
+       	<property name="mail_port" value="${mail.smtp.port}"></property>
+       	<property name="auth" value="${auth}"></property>
+       	<property name="mail_host_account" value="${mail.smtp.account}"></property>
+       	<property name="mail_host_password" value="${mail.smtp.password}"/>
+       	<property name="senderAddress" value="${mail.from}"></property>
+       	<property name="senderName" value="${mail.name}"></property>
+        <property name="default_charset" value="UTF-8"></property>
+  	</bean>
+  
+<!--   	<bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean"> -->
+<!--         <property name="velocityProperties"> -->
+<!--             <props> -->
+<!--             	<prop key="resource.loader">class</prop>   -->
+<!--                 <prop key="class.resource.loader.class">    -->
+<!--                     org.apache.velocity.runtime.resource.loader.ClasspathResourceLoader    -->
+<!--                 </prop>  -->
+<!--                 <prop key="velocimacro.library"></prop> -->
+<!--             	<prop key="output.encoding">UTF-8</prop> -->
+<!-- 				<prop key="input.encoding">UTF-8</prop> -->
+<!--             </props>      -->
+<!--         </property>      -->
+<!--    	</bean>   -->
+</beans>
